@@ -1,3 +1,4 @@
+import Shared
 import SwiftUI
 
 struct HomeView: View {
@@ -20,16 +21,7 @@ struct HomeView: View {
 
 	var body: some View {
 		ScrollView {
-			switch viewModel.viewState {
-			case let .content(homeData):
-				content(homeData)
-
-			case .loading:
-				progressView()
-
-			case let .error(message):
-				errorView(message: message)
-			}
+			progressView()
 		}
 		.background(theme.bg)
 		.scrollIndicators(.hidden)
@@ -45,7 +37,7 @@ struct HomeView: View {
 				query: searchQuery,
 				visibleCount: filteredGroups(from: data).reduce(0) { $0 + $1.countries.count }
 			)
-			groups(filteredGroups(from: data))
+			groups([])
 			countdownSection(kickoff: data.kickoff, stadium: data.stadium)
 				.padding(.bottom, 48)
 		}
@@ -127,7 +119,7 @@ struct HomeView: View {
 
 	// MARK: - Groups
 
-	private func groups(_ groups: [CountryGroup]) -> some View {
+	private func groups(_ groups: [WcGroup]) -> some View {
 		VStack(spacing: 12) {
 			ForEach(groups, id: \.name) { group in
 				GroupCardView(group: group, theme: theme) { country in
@@ -162,9 +154,9 @@ struct HomeView: View {
 // MARK: - Group Card
 
 private struct GroupCardView: View {
-	let group: CountryGroup
+	let group: WcGroup
 	let theme: Theme
-	let onTap: (Country) -> Void
+	let onTap: (Shared.Country) -> Void
 
 	var body: some View {
 		VStack(alignment: .leading, spacing: 14) {
@@ -197,12 +189,12 @@ private struct GroupCardView: View {
 // MARK: - Country Tile
 
 private struct CountryTileView: View {
-	let country: Country
+	let country: Shared.Country
 	let theme: Theme
 
 	var body: some View {
 		HStack(spacing: 10) {
-			FlagBadgeView(url: country.flagUrl, size: 34)
+			FlagBadgeView(url: country.flagUrl.toUrl(), size: 34)
 			VStack(alignment: .leading, spacing: 2) {
 				Text(country.name)
 					.font(.system(size: 13.5, weight: .bold))

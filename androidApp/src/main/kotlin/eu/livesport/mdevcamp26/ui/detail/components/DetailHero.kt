@@ -33,7 +33,7 @@ import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import eu.livesport.mdevcamp26.R
-import eu.livesport.mdevcamp26.domain.repository.model.CountryDetail
+import eu.livesport.mdevcamp26.shared.domain.model.CountryDetail
 import eu.livesport.mdevcamp26.ui.theme.WcHeroDisplay
 import eu.livesport.mdevcamp26.ui.theme.WcMicroLabel
 import eu.livesport.mdevcamp26.ui.theme.WcStatValueLarge

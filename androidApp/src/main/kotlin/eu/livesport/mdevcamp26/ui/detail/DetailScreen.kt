@@ -25,8 +25,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import eu.livesport.mdevcamp26.domain.repository.model.CountryDetail
-import eu.livesport.mdevcamp26.domain.repository.model.GroupTeam
+import eu.livesport.mdevcamp26.shared.domain.model.CountryDetail
+import eu.livesport.mdevcamp26.shared.domain.model.GroupTeam
 import eu.livesport.mdevcamp26.ui.detail.components.DetailBody
 import eu.livesport.mdevcamp26.ui.detail.components.DetailHero
 import eu.livesport.mdevcamp26.ui.theme.WcTheme

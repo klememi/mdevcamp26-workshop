@@ -20,8 +20,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.dropUnlessResumed
 import eu.livesport.mdevcamp26.R
-import eu.livesport.mdevcamp26.domain.repository.model.Country
-import eu.livesport.mdevcamp26.domain.repository.model.WcGroup
+import eu.livesport.mdevcamp26.shared.domain.model.Country
+import eu.livesport.mdevcamp26.shared.domain.model.WcGroup
 import eu.livesport.mdevcamp26.ui.theme.WcTheme
 
 @Composable

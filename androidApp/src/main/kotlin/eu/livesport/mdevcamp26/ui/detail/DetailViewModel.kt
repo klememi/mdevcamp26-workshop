@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import eu.livesport.mdevcamp26.domain.repository.CountryDetailRepository
 import eu.livesport.mdevcamp26.domain.repository.key.CountryDetailKey
-import eu.livesport.mdevcamp26.domain.repository.model.CountryDetail
-import eu.livesport.mdevcamp26.domain.repository.model.Result
+import eu.livesport.mdevcamp26.shared.domain.model.CountryDetail
+import eu.livesport.mdevcamp26.shared.domain.model.Result
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map

@@ -1,6 +1,6 @@
 package eu.livesport.mdevcamp26.ui.detail
 
-import eu.livesport.mdevcamp26.domain.repository.model.CountryDetail
+import eu.livesport.mdevcamp26.shared.domain.model.CountryDetail
 
 sealed interface DetailUiState {
     data object Loading : DetailUiState

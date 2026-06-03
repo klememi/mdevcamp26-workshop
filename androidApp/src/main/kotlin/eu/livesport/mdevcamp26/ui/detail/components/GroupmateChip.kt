@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
-import eu.livesport.mdevcamp26.domain.repository.model.GroupTeam
+import eu.livesport.mdevcamp26.shared.domain.model.GroupTeam
 import eu.livesport.mdevcamp26.ui.theme.WcChipLabel
 import eu.livesport.mdevcamp26.ui.theme.WcTheme
 

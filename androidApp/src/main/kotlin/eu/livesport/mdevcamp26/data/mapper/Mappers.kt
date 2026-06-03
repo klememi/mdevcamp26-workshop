@@ -5,11 +5,11 @@ import eu.livesport.mdevcamp26.data.remote.model.CountryDto
 import eu.livesport.mdevcamp26.data.remote.model.GroupTeamDto
 import eu.livesport.mdevcamp26.data.remote.model.HomeDataDto
 import eu.livesport.mdevcamp26.data.remote.model.WcGroupDto
-import eu.livesport.mdevcamp26.domain.repository.model.Country
-import eu.livesport.mdevcamp26.domain.repository.model.CountryDetail
-import eu.livesport.mdevcamp26.domain.repository.model.GroupTeam
-import eu.livesport.mdevcamp26.domain.repository.model.HomeData
-import eu.livesport.mdevcamp26.domain.repository.model.WcGroup
+import eu.livesport.mdevcamp26.shared.domain.model.Country
+import eu.livesport.mdevcamp26.shared.domain.model.CountryDetail
+import eu.livesport.mdevcamp26.shared.domain.model.GroupTeam
+import eu.livesport.mdevcamp26.shared.domain.model.HomeData
+import eu.livesport.mdevcamp26.shared.domain.model.WcGroup
 import kotlin.time.Instant
 
 internal fun CountryDto.toDomain(): Country = Country(

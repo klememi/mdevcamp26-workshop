@@ -19,16 +19,7 @@ struct CountryDetailView: View {
 
 	var body: some View {
 		ScrollView {
-			switch viewModel.viewState {
-			case let .content(detail):
-				content(detail)
-
-			case .loading:
-				progressView()
-
-			case let .error(message):
-				errorView(message: message)
-			}
+			progressView()
 		}
 		.background(theme.bg)
 		.scrollIndicators(.hidden)
@@ -37,9 +28,25 @@ struct CountryDetailView: View {
 		.task { await viewModel.load(code: code) }
 	}
 
+	// MARK: - Back button
+
+	private var backButton: some View {
+		Button {
+			dismiss()
+		} label: {
+			Image(systemName: "chevron.left")
+				.font(.system(size: 14, weight: .semibold))
+				.foregroundStyle(theme.accentInk)
+				.frame(width: 40, height: 40)
+				.background(Color.black.opacity(0.12))
+				.clipShape(Circle())
+		}
+		.buttonStyle(.plain)
+	}
+
 	// MARK: - Main view functions
 
-	private func content(_ detail: CountryDetail) -> some View {
+	private func content(_ detail: Shared.CountryDetail) -> some View {
 		VStack(spacing: 0) {
 			heroSection(detail: detail)
 			bodySection(detail: detail)
@@ -77,7 +84,7 @@ struct CountryDetailView: View {
 
 	// MARK: - Hero
 
-	private func heroSection(detail: CountryDetail) -> some View {
+	private func heroSection(detail: Shared.CountryDetail) -> some View {
 		ZStack(alignment: .topLeading) {
 			theme.accent.ignoresSafeArea(edges: .top)
 
@@ -101,7 +108,7 @@ struct CountryDetailView: View {
 					.padding(.top, 6)
 
 				HStack(alignment: .top, spacing: 16) {
-					heroFlag(url: detail.flagUrl)
+					heroFlag(url: detail.flagUrl.toUrl())
 					HStack(spacing: 0) {
 						statPair(label: "FIFA RANK", value: "#\(detail.ranking)")
 						statPair(label: "APPEARANCES", value: "\(detail.appearances)×")
@@ -146,7 +153,7 @@ struct CountryDetailView: View {
 
 	// MARK: - Body
 
-	private func bodySection(detail: CountryDetail) -> some View {
+	private func bodySection(detail: Shared.CountryDetail) -> some View {
 		VStack(spacing: 10) {
 			bestFinishCard(best: detail.best)
 
@@ -233,7 +240,7 @@ struct CountryDetailView: View {
 		.cardSurface(theme: theme, cornerRadius: 20)
 	}
 
-	private func groupmatesSection(group: String, mates: [GroupTeam]) -> some View {
+	private func groupmatesSection(group: String, mates: [Shared.GroupTeam]) -> some View {
 		VStack(alignment: .leading, spacing: 8) {
 			if !mates.isEmpty {
 				Text("Also in Group \(group)")
@@ -257,9 +264,9 @@ struct CountryDetailView: View {
 		.padding(.top, 8)
 	}
 
-	private func groupmateChip(_ mate: GroupTeam) -> some View {
+	private func groupmateChip(_ mate: Shared.GroupTeam) -> some View {
 		HStack(spacing: 8) {
-			FlagBadgeView(url: mate.flagUrl, size: 26)
+			FlagBadgeView(url: mate.flagUrl.toUrl(), size: 26)
 			Text(mate.name)
 				.font(.system(size: 13, weight: .semibold))
 				.foregroundStyle(theme.ink)
@@ -279,22 +286,6 @@ struct CountryDetailView: View {
 			.padding(.vertical, 5)
 			.background(color)
 			.clipShape(Capsule())
-	}
-	
-	// MARK: - Back button
-
-	private var backButton: some View {
-		Button {
-			dismiss()
-		} label: {
-			Image(systemName: "chevron.left")
-				.font(.system(size: 14, weight: .semibold))
-				.foregroundStyle(theme.accentInk)
-				.frame(width: 40, height: 40)
-				.background(Color.black.opacity(0.12))
-				.clipShape(Circle())
-		}
-		.buttonStyle(.plain)
 	}
 }
 

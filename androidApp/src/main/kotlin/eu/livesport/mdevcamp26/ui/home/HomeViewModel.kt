@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import eu.livesport.mdevcamp26.domain.repository.HomeDataRepository
 import eu.livesport.mdevcamp26.domain.repository.key.HomeDataKey
-import eu.livesport.mdevcamp26.domain.repository.model.HomeData
-import eu.livesport.mdevcamp26.domain.repository.model.Result
-import eu.livesport.mdevcamp26.domain.repository.model.WcGroup
+import eu.livesport.mdevcamp26.shared.domain.model.HomeData
+import eu.livesport.mdevcamp26.shared.domain.model.Result
+import eu.livesport.mdevcamp26.shared.domain.model.WcGroup
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow

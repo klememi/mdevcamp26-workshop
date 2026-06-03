@@ -1,4 +1,4 @@
-package eu.livesport.mdevcamp26.domain.repository.model
+package eu.livesport.mdevcamp26.shared.domain.model
 
 data class Country(
     val code: String,

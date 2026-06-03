@@ -52,6 +52,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 481F42C72F978E8600BB1C3C /* Build configuration list for PBXNativeTarget "wctrivia" */;
 			buildPhases = (
+				485DF9772FCD479F00F5D9EC /* Embed And Sign KMP */,
 				481F42A22F978E8400BB1C3C /* Sources */,
 				481F42A32F978E8400BB1C3C /* Frameworks */,
 				481F42A42F978E8400BB1C3C /* Resources */,
@@ -115,6 +116,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		485DF9772FCD479F00F5D9EC /* Embed And Sign KMP */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Embed And Sign KMP";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"$SRCROOT/..\"\n./gradlew :shared:embedAndSignAppleFrameworkForXcode\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		481F42A22F978E8400BB1C3C /* Sources */ = {

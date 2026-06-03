@@ -2,8 +2,8 @@ package eu.livesport.mdevcamp26.data.repository
 
 import eu.livesport.mdevcamp26.data.mapper.toDomain
 import eu.livesport.mdevcamp26.data.remote.WcRemoteDataSource
-import eu.livesport.mdevcamp26.domain.repository.model.CountryDetail
-import eu.livesport.mdevcamp26.domain.repository.model.Result
+import eu.livesport.mdevcamp26.shared.domain.model.CountryDetail
+import eu.livesport.mdevcamp26.shared.domain.model.Result
 import eu.livesport.mdevcamp26.domain.repository.CountryDetailRepository
 import eu.livesport.mdevcamp26.domain.repository.key.CountryDetailKey
 import kotlinx.coroutines.CoroutineDispatcher

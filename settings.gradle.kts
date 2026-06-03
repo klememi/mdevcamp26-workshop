@@ -20,3 +20,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MDevCamp26Workshop"
 include(":androidApp")
+include(":shared")

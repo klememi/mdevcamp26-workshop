@@ -1,6 +1,6 @@
 package eu.livesport.mdevcamp26.domain.repository
 
-import eu.livesport.mdevcamp26.domain.repository.model.Result
+import eu.livesport.mdevcamp26.shared.domain.model.Result
 import kotlinx.coroutines.flow.Flow
 
 interface Repository<Key, Data> {

@@ -1,6 +1,6 @@
 package eu.livesport.mdevcamp26.ui.home
 
-import eu.livesport.mdevcamp26.domain.repository.model.WcGroup
+import eu.livesport.mdevcamp26.shared.domain.model.WcGroup
 
 sealed interface HomeUiState {
     data object Loading : HomeUiState

@@ -21,8 +21,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import eu.livesport.mdevcamp26.R
-import eu.livesport.mdevcamp26.domain.repository.model.CountryDetail
-import eu.livesport.mdevcamp26.domain.repository.model.GroupTeam
+import eu.livesport.mdevcamp26.shared.domain.model.CountryDetail
+import eu.livesport.mdevcamp26.shared.domain.model.GroupTeam
 import eu.livesport.mdevcamp26.ui.theme.WcMicroLabel
 import eu.livesport.mdevcamp26.ui.theme.WcMomentTitle
 import eu.livesport.mdevcamp26.ui.theme.WcTheme
