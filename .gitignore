@@ -1,0 +1,105 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# IDEs / editors
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# Claude
+.claude/
+
+# === Android / Gradle / KMP ===
+
+# Gradle
+.gradle/
+build/
+**/build/
+!src/**/build/
+out/
+.kotlin/
+
+# Gradle wrapper artifacts
+gradle-app.setting
+.gradletasknamecache
+
+# Local configuration
+local.properties
+
+# Android Studio captures
+captures/
+
+# Keystores
+*.jks
+*.keystore
+
+# Android SDK / NDK
+.cxx/
+
+# === Kotlin Multiplatform ===
+
+# KMP / Konan / Kotlin native caches
+.konan/
+kotlin-js-store/
+
+# Generated XCFrameworks / shared Apple binaries
+shared/build/
+shared/build/XCFrameworks/
+
+# === iOS / Xcode ===
+
+# Build outputs
+ios/**/build/
+DerivedData/
+**/DerivedData/
+*.xcuserstate
+*.xcuserdatad/
+xcuserdata/
+
+# Xcode workspace user data
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+*.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/
+
+# Swift Package Manager
+.swiftpm/
+.build/
+Packages/
+Package.pins
+Package.resolved
+
+# CocoaPods
+Pods/
+*.xcworkspace/contents.xcworkspacedata.bak
+
+# Carthage
+Carthage/Build/
+Carthage/Checkouts/
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Provisioning / signing
+*.mobileprovision
+*.p12
+*.cer
+
+# Logs / coverage
+*.log
+*.hprof
+coverage/
+
+presentation/

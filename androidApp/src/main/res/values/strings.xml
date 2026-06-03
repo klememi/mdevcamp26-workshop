@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">The Draw \'26</string>
+
+    <!-- KickoffCountdown -->
+    <string name="kickoff_in">Kickoff in</string>
+
+    <!-- Masthead -->
+    <string name="edition_info">Edition · XXIII  /  June 11 — July 19</string>
+    <string name="masthead_title">THE DRAW\n’26</string>
+    <string name="masthead_subtitle">48 nations. 12 groups. Tap any country to dig into its World Cup trivia.</string>
+    <string name="search_placeholder">Search country</string>
+
+    <!-- GroupCard -->
+    <string name="group_label">GROUP</string>
+
+    <!-- DetailHero -->
+    <string name="back_button_description">Back</string>
+    <string name="fifa_rank_label">FIFA RANK</string>
+    <string name="appearances_label">APPEARANCES</string>
+
+    <!-- DetailBody -->
+    <string name="best_finish_label">BEST FINISH</string>
+    <string name="star_2026_label">STAR · 2026</string>
+    <string name="all_time_top_scorer_label">ALL-TIME TOP SCORER</string>
+    <string name="moment_tag">Moment</string>
+    <string name="did_you_know_tag">Did you know?</string>
+</resources>
