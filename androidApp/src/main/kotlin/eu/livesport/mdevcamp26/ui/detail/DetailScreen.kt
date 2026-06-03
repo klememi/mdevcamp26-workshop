@@ -27,6 +27,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import eu.livesport.mdevcamp26.shared.domain.model.CountryDetail
 import eu.livesport.mdevcamp26.shared.domain.model.GroupTeam
+import eu.livesport.mdevcamp26.shared.ui.detail.DetailUiState
+import eu.livesport.mdevcamp26.shared.ui.detail.DetailViewModel
 import eu.livesport.mdevcamp26.ui.detail.components.DetailBody
 import eu.livesport.mdevcamp26.ui.detail.components.DetailHero
 import eu.livesport.mdevcamp26.ui.theme.WcTheme

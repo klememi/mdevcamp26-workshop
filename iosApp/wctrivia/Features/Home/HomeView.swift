@@ -2,48 +2,39 @@ import Shared
 import SwiftUI
 
 struct HomeView: View {
+	
+	#warning("TODO: Declare shared viewModel using @Inject property wrapper")
 
 	@Binding
 	var path: [String]
 
-	@StateObject
-	private var viewModel = HomeViewModel()
-
-	@Environment(\.colorScheme)
-	private var colorScheme
-
-	@State
-	private var searchQuery = ""
-
-	private var theme: Theme {
-		colorScheme == .dark ? .dark : .light
-	}
+	@Environment(\.colorScheme) private var colorScheme
 
 	var body: some View {
 		ScrollView {
-			progressView()
+			#warning("TODO: Implement content UI using shared viewModel and provided main view functions")
 		}
 		.background(theme.bg)
 		.scrollIndicators(.hidden)
-		.task { await viewModel.load() }
 	}
-
+	
+	private var theme: Theme {
+		colorScheme == .dark ? .dark : .light
+	}
+	
 	// MARK: - Main view functions
 
-	private func content(_ data: HomeData) -> some View {
+	private func content(_ data: HomeUiStateSuccess) -> some View {
 		VStack(alignment: .leading, spacing: 0) {
 			header(header: data.header, title: data.title, subtitle: data.subtitle)
-			searchBar(
-				query: searchQuery,
-				visibleCount: filteredGroups(from: data).reduce(0) { $0 + $1.countries.count }
-			)
-			groups([])
-			countdownSection(kickoff: data.kickoff, stadium: data.stadium)
+			searchBar(query: data.searchQuery, visibleCount: data.visibleCount)
+			groups(data.groups)
+			countdownSection(kickoff: data.kickoffMs, stadium: data.stadium)
 				.padding(.bottom, 48)
 		}
 		.padding(.horizontal, 20)
 	}
-
+	
 	private func errorView(message: String) -> some View {
 		VStack(spacing: 12) {
 			Text("Couldn't load the draw")
@@ -57,7 +48,7 @@ struct HomeView: View {
 		.padding(24)
 		.frame(maxWidth: .infinity, minHeight: 400)
 	}
-
+	
 	private func progressView() -> some View {
 		ProgressView()
 			.tint(theme.ink)
@@ -95,12 +86,13 @@ struct HomeView: View {
 		.padding(.bottom, 22)
 	}
 
-	private func searchBar(query: String, visibleCount: Int) -> some View {
+	private func searchBar(query: String, visibleCount: Int32) -> some View {
 		HStack(spacing: 10) {
 			Image(systemName: "magnifyingglass")
 				.font(.system(size: 14))
 				.foregroundStyle(theme.sub)
-			TextField("Search country", text: $searchQuery)
+			#warning("TODO: change textfield binding so it works properly")
+			TextField("Search country", text: .constant("change me"))
 				.font(.system(size: 15))
 				.foregroundStyle(theme.ink)
 				.tint(theme.accent)
@@ -131,23 +123,11 @@ struct HomeView: View {
 
 	// MARK: - Countdown
 
-	private func countdownSection(kickoff: Date, stadium: String) -> some View {
+	private func countdownSection(kickoff: Int64, stadium: String) -> some View {
 		TimelineView(.periodic(from: .now, by: 1)) { context in
 			KickoffCountdownView(now: context.date, kickoff: kickoff, stadium: stadium, theme: theme)
 		}
 		.padding(.top, 28)
-	}
-
-	private func filteredGroups(from response: HomeData) -> [CountryGroup] {
-		guard !searchQuery.isEmpty else {
-			return response.groups
-		}
-
-		let q = searchQuery.lowercased()
-		return response.groups.compactMap { group in
-			let filtered = group.countries.filter { $0.name.lowercased().contains(q) }
-			return filtered.isEmpty ? nil : CountryGroup(name: group.name, countries: filtered)
-		}
 	}
 }
 

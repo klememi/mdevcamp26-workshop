@@ -2,12 +2,12 @@ import SwiftUI
 
 struct KickoffCountdownView: View {
     let now: Date
-    let kickoff: Date
+    let kickoff: Int64
     let stadium: String
     let theme: Theme
 
     private var diff: TimeInterval {
-		max(0, kickoff.timeIntervalSince(now))
+		max(0, kickoff.toDate().timeIntervalSince(now))
     }
 
     private var days: Int    { Int(diff) / 86400 }

@@ -2,16 +2,15 @@ import Shared
 import SwiftUI
 
 struct CountryDetailView: View {
+	
+	#warning("TODO: Declare shared viewModel. It needs parameter for initialization so you cant use @Inject directly. Use @State to store it effectively")
 
-	@StateObject
-	private var viewModel = CountryDetailViewModel()
+	@Environment(\.dismiss) private var dismiss
+	@Environment(\.colorScheme) private var colorScheme
 
-	@Environment(\.dismiss)
-	private var dismiss
-	@Environment(\.colorScheme)
-	private var colorScheme
-
-	let code: String
+	init(code: String) {
+		#warning("TODO: Initialize shared viewModel using code parameter and Inject constructor")
+	}
 
 	private var theme: Theme {
 		colorScheme == .dark ? .dark : .light
@@ -19,38 +18,23 @@ struct CountryDetailView: View {
 
 	var body: some View {
 		ScrollView {
-			progressView()
+			#warning("TODO: Implement content UI using shared viewModel and provided main view functions")
 		}
 		.background(theme.bg)
 		.scrollIndicators(.hidden)
 		.ignoresSafeArea(edges: .top)
 		.navigationBarBackButtonHidden(true)
-		.task { await viewModel.load(code: code) }
-	}
-
-	// MARK: - Back button
-
-	private var backButton: some View {
-		Button {
-			dismiss()
-		} label: {
-			Image(systemName: "chevron.left")
-				.font(.system(size: 14, weight: .semibold))
-				.foregroundStyle(theme.accentInk)
-				.frame(width: 40, height: 40)
-				.background(Color.black.opacity(0.12))
-				.clipShape(Circle())
-		}
-		.buttonStyle(.plain)
 	}
 
 	// MARK: - Main view functions
 
-	private func content(_ detail: Shared.CountryDetail) -> some View {
-		VStack(spacing: 0) {
-			heroSection(detail: detail)
-			bodySection(detail: detail)
-				.padding(.bottom, 48)
+	private func content(_ detail: CountryDetail) -> some View {
+		ScrollView {
+			VStack(spacing: 0) {
+				heroSection(detail: detail)
+				bodySection(detail: detail)
+					.padding(.bottom, 48)
+			}
 		}
 		.background(theme.bg)
 		.scrollIndicators(.hidden)
@@ -74,17 +58,33 @@ struct CountryDetailView: View {
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(theme.bg)
 	}
-
+	
 	private func progressView() -> some View {
 		ProgressView()
 			.tint(theme.ink)
 			.frame(maxWidth: .infinity, maxHeight: .infinity)
 			.background(theme.bg)
 	}
+	
+	// MARK: - Back button
+	
+	private var backButton: some View {
+		Button {
+			dismiss()
+		} label: {
+			Image(systemName: "chevron.left")
+				.font(.system(size: 14, weight: .semibold))
+				.foregroundStyle(theme.accentInk)
+				.frame(width: 40, height: 40)
+				.background(Color.black.opacity(0.12))
+				.clipShape(Circle())
+		}
+		.buttonStyle(.plain)
+	}
 
 	// MARK: - Hero
 
-	private func heroSection(detail: Shared.CountryDetail) -> some View {
+	private func heroSection(detail: CountryDetail) -> some View {
 		ZStack(alignment: .topLeading) {
 			theme.accent.ignoresSafeArea(edges: .top)
 
@@ -153,7 +153,7 @@ struct CountryDetailView: View {
 
 	// MARK: - Body
 
-	private func bodySection(detail: Shared.CountryDetail) -> some View {
+	private func bodySection(detail: CountryDetail) -> some View {
 		VStack(spacing: 10) {
 			bestFinishCard(best: detail.best)
 
