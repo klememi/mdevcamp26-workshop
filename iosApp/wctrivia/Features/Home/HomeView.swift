@@ -2,17 +2,32 @@ import Shared
 import SwiftUI
 
 struct HomeView: View {
-	
-	#warning("TODO: Declare shared viewModel using @Inject property wrapper")
 
 	@Binding
 	var path: [String]
 
+	@State private var searchQuery = ""
+
 	@Environment(\.colorScheme) private var colorScheme
+
+	@Inject private var viewModel: HomeViewModel
 
 	var body: some View {
 		ScrollView {
-			#warning("TODO: Implement content UI using shared viewModel and provided main view functions")
+			Observing(viewModel.uiState) { uiState in
+				switch onEnum(of: uiState) {
+				case let .success(data):
+					content(data)
+
+				case .loading:
+					ProgressView()
+						.tint(theme.ink)
+						.frame(maxWidth: .infinity, minHeight: 600)
+
+				case let .error(error):
+					errorView(message: error.message)
+				}
+			}
 		}
 		.background(theme.bg)
 		.scrollIndicators(.hidden)
@@ -21,8 +36,6 @@ struct HomeView: View {
 	private var theme: Theme {
 		colorScheme == .dark ? .dark : .light
 	}
-	
-	// MARK: - Main view functions
 
 	private func content(_ data: HomeUiStateSuccess) -> some View {
 		VStack(alignment: .leading, spacing: 0) {
@@ -33,26 +46,6 @@ struct HomeView: View {
 				.padding(.bottom, 48)
 		}
 		.padding(.horizontal, 20)
-	}
-	
-	private func errorView(message: String) -> some View {
-		VStack(spacing: 12) {
-			Text("Couldn't load the draw")
-				.font(.system(size: 18, weight: .black))
-				.foregroundStyle(theme.ink)
-			Text(message)
-				.font(.system(size: 13))
-				.foregroundStyle(theme.sub)
-				.multilineTextAlignment(.center)
-		}
-		.padding(24)
-		.frame(maxWidth: .infinity, minHeight: 400)
-	}
-	
-	private func progressView() -> some View {
-		ProgressView()
-			.tint(theme.ink)
-			.frame(maxWidth: .infinity, minHeight: 600)
 	}
 
 	// MARK: - Masthead
@@ -91,8 +84,7 @@ struct HomeView: View {
 			Image(systemName: "magnifyingglass")
 				.font(.system(size: 14))
 				.foregroundStyle(theme.sub)
-			#warning("TODO: change textfield binding so it works properly")
-			TextField("Search country", text: .constant("change me"))
+			TextField("Search country", text: .init(get: { query }, set: { viewModel.onQueryChange(query: $0) }))
 				.font(.system(size: 15))
 				.foregroundStyle(theme.ink)
 				.tint(theme.accent)
@@ -128,6 +120,20 @@ struct HomeView: View {
 			KickoffCountdownView(now: context.date, kickoff: kickoff, stadium: stadium, theme: theme)
 		}
 		.padding(.top, 28)
+	}
+
+	private func errorView(message: String) -> some View {
+		VStack(spacing: 12) {
+			Text("Couldn't load the draw")
+				.font(.system(size: 18, weight: .black))
+				.foregroundStyle(theme.ink)
+			Text(message)
+				.font(.system(size: 13))
+				.foregroundStyle(theme.sub)
+				.multilineTextAlignment(.center)
+		}
+		.padding(24)
+		.frame(maxWidth: .infinity, minHeight: 400)
 	}
 }
 

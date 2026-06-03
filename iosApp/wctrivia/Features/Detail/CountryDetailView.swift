@@ -3,13 +3,18 @@ import SwiftUI
 
 struct CountryDetailView: View {
 	
-	#warning("TODO: Declare shared viewModel. It needs parameter for initialization so you cant use @Inject directly. Use @State to store it effectively")
+	@State private var viewModel: DetailViewModel
 
 	@Environment(\.dismiss) private var dismiss
 	@Environment(\.colorScheme) private var colorScheme
 
 	init(code: String) {
-		#warning("TODO: Initialize shared viewModel using code parameter and Inject constructor")
+		_viewModel = State(
+			wrappedValue: KoinSwiftBridge.shared.get(
+				objCClass: DetailViewModel.self,
+				parameters: [code]
+			) as! DetailViewModel
+		)
 	}
 
 	private var theme: Theme {
@@ -17,16 +22,38 @@ struct CountryDetailView: View {
 	}
 
 	var body: some View {
-		ScrollView {
-			#warning("TODO: Implement content UI using shared viewModel and provided main view functions")
+		Observing(viewModel.uiState) { uiState in
+			switch onEnum(of: uiState) {
+			case let .success(data):
+				content(data.detail)
+				
+			case .loading:
+				ProgressView()
+					.tint(theme.ink)
+					.frame(maxWidth: .infinity, maxHeight: .infinity)
+					.background(theme.bg)
+				
+			case let .error(error):
+				errorView(message: error.message)
+			}
 		}
-		.background(theme.bg)
-		.scrollIndicators(.hidden)
 		.ignoresSafeArea(edges: .top)
 		.navigationBarBackButtonHidden(true)
 	}
 
-	// MARK: - Main view functions
+	private var backButton: some View {
+		Button {
+			dismiss()
+		} label: {
+			Image(systemName: "chevron.left")
+				.font(.system(size: 14, weight: .semibold))
+				.foregroundStyle(theme.accentInk)
+				.frame(width: 40, height: 40)
+				.background(Color.black.opacity(0.12))
+				.clipShape(Circle())
+		}
+		.buttonStyle(.plain)
+	}
 
 	private func content(_ detail: CountryDetail) -> some View {
 		ScrollView {
@@ -57,29 +84,6 @@ struct CountryDetailView: View {
 		.padding(.horizontal, 20)
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(theme.bg)
-	}
-	
-	private func progressView() -> some View {
-		ProgressView()
-			.tint(theme.ink)
-			.frame(maxWidth: .infinity, maxHeight: .infinity)
-			.background(theme.bg)
-	}
-	
-	// MARK: - Back button
-	
-	private var backButton: some View {
-		Button {
-			dismiss()
-		} label: {
-			Image(systemName: "chevron.left")
-				.font(.system(size: 14, weight: .semibold))
-				.foregroundStyle(theme.accentInk)
-				.frame(width: 40, height: 40)
-				.background(Color.black.opacity(0.12))
-				.clipShape(Circle())
-		}
-		.buttonStyle(.plain)
 	}
 
 	// MARK: - Hero
