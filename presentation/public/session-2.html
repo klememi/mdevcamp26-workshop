@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session 2 — Bridge the Gap</title>
+  <link rel="stylesheet" href="shared/styles.css">
+  <link rel="stylesheet" href="shared/workshop.css">
+  <link rel="stylesheet" href="shared/dev.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="hero" data-title="Session 2">
+    <h1>Session <span>2</span></h1>
+    <p class="subtitle">The Heavy Lifting</p>
+  </div>
+
+  <section class="slide-compact" data-title="Theory">
+    <span class="tag tag-theory">The Primer</span>
+    <h2>Dependency <span class="accent">Injection</span></h2>
+    <div class="placeholder">
+      <ul>
+        <li>Flawless for Android</li>
+        <li>iOS requires a little helper</li>
+        <li>Need to register dependencies at app start</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide-compact" data-title="Theory">
+    <span class="tag tag-theory">The Primer</span>
+    <h2>Platform-specific <span class="accent">code</span></h2>
+    <div class="placeholder">
+      <ul>
+        <li><code>expect fun</code> in <code>commonMain</code></li>
+        <li><code>actual fun</code> in <code>iosMain</code>/<code>androidMain</code></li>
+        <li>Don't forget to update dependencies in <code>build.gradle.kts</code></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="slide-compact" data-title="Exercise">
+    <span class="tag tag-coding">The Sandbox</span>
+    <h2>What you'll <span class="accent">build</span></h2>
+    <div class="cols2">
+      <div class="card">
+        <h3>Goal</h3>
+        <ul>
+          <li>Create shared Koin module</li>
+          <li>Use <code>expect/actual</code> pattern to implement platform-specific feature</li>
+          <li>Move rest of the objects to KMP</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Starting branch</h3>
+        <p><code>after-1</code></p>
+      </div>
+    </div>
+    <div class="q"><p>Stuck? Pair up or wave us over — don't burn 10 minutes silent.</p></div>
+  </section>
+
+  <section class="slide-compact" data-title="Recap">
+    <span class="tag tag-resolution">The Resolution</span>
+    <h2>Session 2 <span class="accent">recap</span></h2>
+  </section>
+
+</div>
+
+<script src="shared/nav.js"></script>
+<script src="shared/slides.js"></script>
+<script src="shared/lightbox.js"></script>
+<script src="shared/workshop.js"></script>
+<script src="shared/dev.js"></script>
+</body>
+</html>

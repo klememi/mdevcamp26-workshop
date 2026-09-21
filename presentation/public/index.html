@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bridge the Gap — KMP Workshop</title>
+  <link rel="stylesheet" href="shared/styles.css">
+  <link rel="stylesheet" href="shared/workshop.css">
+  <link rel="stylesheet" href="shared/dev.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="hero" data-title="Intro">
+    <h1>Bridge <span>the</span> Gap</h1>
+    <p class="subtitle">How to Write KMP Devs Actually Like</p>
+  </div>
+
+  <section class="slide-compact" data-title="Hosts">
+    <h2>Your <span class="accent">hosts</span></h2>
+    <div class="hosts">
+      <div class="host">
+        <img class="host-photo" src="images/klement.png" alt="Michal Klement">
+        <div class="host-name">Michal Klement</div>
+        <div class="host-role">iOS</div>
+      </div>
+      <div class="host">
+        <img class="host-photo" src="images/mucha.jpg" alt="Patrik Mucha">
+        <div class="host-name">Patrik Mucha</div>
+        <div class="host-role">Android</div>
+      </div>
+    </div>
+    <p class="slide-takeaway" style="text-align:center;margin-top:28px;">Two platforms. One codebase. Both sides at the table.</p>
+  </section>
+
+  <section class="slide-compact" data-title="What we do">
+    <h2>What we <span class="accent">do</span></h2>
+
+    <div class="app-hero">
+      <img class="app-icon" src="images/appIcon.png" alt="Flashscore">
+      <div class="app-info">
+        <div class="app-name">Flashscore</div>
+        <p class="app-tagline">The most up-to-date live scores, stats and other info from 30+ sports and 6000+ competitions worldwide.</p>
+      </div>
+    </div>
+
+    <div class="showcase">
+      <div class="showcase-screen"><img src="images/screen-android.png" alt="Flashscore screenshot"></div>
+      <div class="showcase-middle">
+        <div class="platform-row">
+          <div class="platform-card android">
+            <div class="platform-header">
+              <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-label="Android">
+                <path d="M17.523 15.341c-.617 0-1.117-.504-1.117-1.125s.5-1.125 1.117-1.125 1.117.504 1.117 1.125-.5 1.125-1.117 1.125m-11.046 0c-.617 0-1.117-.504-1.117-1.125s.5-1.125 1.117-1.125 1.117.504 1.117 1.125-.5 1.125-1.117 1.125m11.447-6.105l2.232-3.872a.464.464 0 0 0-.171-.633.464.464 0 0 0-.633.171l-2.26 3.917A14 14 0 0 0 12 7.547a14 14 0 0 0-5.092.272L4.648 4.902a.464.464 0 0 0-.633-.171.464.464 0 0 0-.171.633l2.232 3.872C2.224 11.392.044 14.985 0 19.013h24c-.044-4.028-2.224-7.621-6.076-9.777"/>
+              </svg>
+              <div class="platform-name">Android</div>
+            </div>
+            <div class="platform-stat"><span class="ps-num">4.7★</span><span class="ps-label">rating</span></div>
+            <div class="platform-stat"><span class="ps-num">2.4M</span><span class="ps-label"># of ratings</span></div>
+            <div class="platform-stat"><span class="ps-num">100M+</span><span class="ps-label">downloads</span></div>
+          </div>
+          <div class="platform-card ios">
+            <div class="platform-header">
+              <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-label="iOS">
+                <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+              </svg>
+              <div class="platform-name">iOS</div>
+            </div>
+            <div class="platform-stat"><span class="ps-num">4.8★</span><span class="ps-label">rating</span></div>
+            <div class="platform-stat"><span class="ps-num">2.4M</span><span class="ps-label"># of ratings</span></div>
+            <div class="platform-stat"><span class="ps-num">73M+</span><span class="ps-label">downloads</span></div>
+          </div>
+        </div>
+        <div class="kmp-row">
+          <div class="kmp-stat"><span class="kmp-num">53M+</span><span class="kmp-label">MAU · March 2026</span></div>
+          <div class="kmp-stat"><span class="kmp-num">2021</span><span class="kmp-label">KMP since alpha</span></div>
+          <div class="kmp-stat"><span class="kmp-num">3 900+</span><span class="kmp-label">Kotlin files shared</span></div>
+        </div>
+      </div>
+      <div class="showcase-screen"><img src="images/screen-ios.png" alt="Flashscore screenshot"></div>
+    </div>
+  </section>
+
+  <section class="slide-compact" data-title="What you'll do">
+    <h2>What you'll <span class="accent">do</span></h2>
+    <div class="draw-shots">
+      <div class="draw-shot"><img src="images/draw.png" alt="The Draw '26 — group overview"></div>
+      <div class="draw-shot"><img src="images/draw2.png" alt="The Draw '26 — country detail"></div>
+    </div>
+  </section>
+
+</div>
+
+<script src="shared/nav.js"></script>
+<script src="shared/slides.js"></script>
+<script src="shared/lightbox.js"></script>
+<script src="shared/workshop.js"></script>
+<script src="shared/dev.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+/* ==========================================
+   Dev Mode — Styles
+   ========================================== */
+
+/* Cyan border when dev mode is active */
+body.dev-mode { outline: 3px solid #0891b2; outline-offset: -3px; }
+body.dev-mode .container * { cursor: crosshair; }
+.dev-panel, .dev-panel * { cursor: default !important; }
+.dev-badge, .dev-badge * { cursor: default !important; }
+
+/* Floating badge */
+.dev-badge {
+  position: fixed; bottom: 20px; left: 20px; z-index: 9990;
+  background: #0891b2; color: #fff; border-radius: 8px;
+  padding: 8px 16px; font-size: 0.82em; font-weight: 700;
+  display: none; align-items: center; gap: 8px;
+  box-shadow: 0 4px 16px rgba(8,145,178,0.4);
+  letter-spacing: 0.5px; user-select: none;
+}
+body.dev-mode .dev-badge { display: flex; }
+
+/* Element hover highlight in dev mode */
+body.dev-mode [data-dev-target]:hover {
+  outline: 2px solid rgba(8,145,178,0.7) !important;
+  outline-offset: 2px;
+  background: rgba(8,145,178,0.04) !important;
+}
+
+/* Dev note markers on elements */
+.dev-marker {
+  position: absolute; z-index: 500;
+  min-width: 20px; height: 20px; border-radius: 10px;
+  background: #f59e0b; color: #000; font-size: 10px; font-weight: 800;
+  display: none; align-items: center; justify-content: center;
+  padding: 0 5px;
+  cursor: pointer !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  border: 2px solid rgba(255,255,255,0.7);
+  top: -6px; right: -6px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+body.dev-mode .dev-marker { display: flex; }
+
+/* Noted elements get persistent outline */
+.dev-noted {
+  outline: 2px dashed rgba(245,158,11,0.6) !important;
+  outline-offset: 2px;
+}
+body.dev-mode .dev-noted {
+  outline: 2px dashed rgba(245,158,11,0.8) !important;
+}
+
+/* Side panel */
+.dev-panel {
+  position: fixed; top: 0; right: -420px; bottom: 0; z-index: 10001;
+  width: 400px; background: #0a1a2a;
+  border-left: 1px solid rgba(8,145,178,0.3);
+  transition: right 0.25s ease;
+  display: flex; flex-direction: column;
+  box-shadow: -8px 0 30px rgba(0,0,0,0.5);
+}
+.dev-panel.open { right: 0; }
+.dev-panel-header {
+  padding: 18px 20px; border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.dev-panel-header h3 { font-size: 1em; margin: 0; color: #fff; font-family: 'Flash Display', sans-serif; }
+.dev-panel-close {
+  background: none; border: none; color: #8a9ba3; font-size: 22px;
+  cursor: pointer !important; line-height: 1; padding: 4px;
+}
+.dev-panel-close:hover { color: #fff; }
+.dev-panel-body {
+  padding: 20px; flex: 1; overflow-y: auto;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.dev-panel textarea {
+  width: 100%; min-height: 100px; resize: vertical;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px; padding: 10px 12px; color: #fff;
+  font-family: inherit; font-size: 0.88em; line-height: 1.5;
+}
+.dev-panel textarea:focus { outline: none; border-color: #0891b2; }
+.dev-panel textarea::placeholder { color: #8a9ba3; }
+
+.dev-target-info {
+  background: rgba(255,255,255,0.03); border-radius: 6px; padding: 10px 12px;
+  font-size: 0.78em; display: flex; flex-direction: column; gap: 4px;
+  font-family: monospace;
+}
+.dev-target-info .dev-ti-page { color: #8a9ba3; }
+.dev-target-info .dev-ti-slide { color: #0891b2; font-weight: 600; }
+.dev-target-info .dev-ti-selector { color: #c8d6dc; }
+.dev-target-info .dev-ti-text { color: #8a9ba3; font-style: italic; font-family: inherit; }
+
+.dev-actions { display: flex; gap: 10px; margin-top: 4px; }
+.dev-btn {
+  flex: 1; padding: 10px 16px; border: none; border-radius: 6px;
+  font-family: inherit; font-size: 0.88em; font-weight: 600;
+  cursor: pointer !important; transition: opacity 0.15s;
+}
+.dev-btn:hover { opacity: 0.85; }
+.dev-btn-save { background: #0891b2; color: #fff; }
+.dev-btn-cancel { background: rgba(255,255,255,0.06); color: #8a9ba3; }
+.dev-btn-delete { background: rgba(245,158,11,0.15); color: #f59e0b; }
+.dev-btn-export { background: rgba(88,214,141,0.15); color: #58d68d; }
+
+/* Notes list in panel */
+.dev-note-item {
+  background: rgba(255,255,255,0.03); border-radius: 6px; padding: 12px;
+  border-left: 3px solid #f59e0b; cursor: pointer !important;
+  transition: background 0.15s;
+}
+.dev-note-item:hover { background: rgba(255,255,255,0.06); }
+.dev-note-item .dev-note-text {
+  font-size: 0.88em; color: #c8d6dc; line-height: 1.5; margin-bottom: 4px;
+}
+.dev-note-item .dev-note-meta {
+  font-size: 0.72em; color: #8a9ba3;
+}
